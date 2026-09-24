@@ -1,17 +1,20 @@
 ---
-backglassChecksum: "0edd1e72feca51f1b15110f80558ef9e"
-backglassNotes: "Download v1.0.0"
+additionalRoms:
+  - checksum: "A0B8F1530FF690649322D63E631610BA"
+    versionOverride: "hglbtrtr"
+    urlOverride: "https://www.vpforums.org/index.php?app=downloads&showfile=696"
+backglassChecksum: "63EA30597E1372F368DBB5FA6F6483F8"
+backglassNotes: "Download 'Harlem Globetrotters On Tour (Bally 1978).zip'"
 backglassVPSId: "F80fGxh1N0"
-enabled: false
 fps: 60
-romChecksum: "0edd1e72feca51f1b15110f80558ef9e"
-romNotes: "Also dl hglbtrtr.zip from https://www.vpforums.org/index.php?app=downloads&showfile=696"
+romChecksum: "A56BAC62DC6DDB828EBF65EE43CF885F"
+romNotes: "Download 'hglbtrtb.zip'"
 romVPSId: "FFKyimLN"
-tableNotes: "Download v6.0.0"
+tableNotes: "Download 'Harlem Globetrotters (Bally 1979) v600.zip'"
 tableVPSId: "ZrSKKrc4"
-tagline: "'Who's that mister? Ain't your sister. It's Sweet Georgia Brown!'"
 testers:
+  - "PBW23"
+  - "Missile Toad"
   - "bhhob"
-  - "bhobman"
-vpxChecksum: "66c4d930fa9d1c31bd9ad2e0711e0a74"
+vpxChecksum: "66C4D930FA9D1C31BD9AD2E0711E0A74"
 vpxVPSId: "3ijUL30D"
