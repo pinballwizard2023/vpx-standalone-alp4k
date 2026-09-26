@@ -17,8 +17,5 @@ vpxChecksum:
 vpxVPSId: "KwF0L8v-Az"
 vpxArchiveFormat: "rar"
 vpxExtractExtra:
-  - "VisualPinball/Music/OzzyOsbourneLarouillas"
-postInstallRename:
-  - source: "OZZY (Original 2025)/VisualPinball/Music/OzzyOsbourneLarouillas"
-    destination: "music/OzzyOsbourneLarouillas"
+  - "VisualPinball/Music/"
     
