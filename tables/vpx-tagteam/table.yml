@@ -6,7 +6,7 @@ fps: 60
 romChecksum: "FBDDFFBF24B2B8F558DFE27BC9BE06AD"
 romNotes: "Download 'tagteam2.zip'"
 romUrlOverride: "https://pinballnirvana.com/forums/resources/tagteam2.2458/"
-romVersionOverride: "tagteam2.zip"
+romVersionOverride: "tagteam2"
 tableNotes: "Download 'Tag-Team Pinball (Gottlieb 1985) v1.0.1.zip'"
 tableVPSId: "DWM9hcVE"
 testers:
