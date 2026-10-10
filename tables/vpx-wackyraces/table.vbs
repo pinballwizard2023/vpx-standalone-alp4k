@@ -358,7 +358,7 @@ Ramp050.Image = "track"
     DMD_Init
 
     ' freeplay or coins
-    bFreePlay = False 'we want coins
+    bFreePlay = True 'we want coins
 
     'if bFreePlay = false Then DOF 125, DOFOn
 
