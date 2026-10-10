@@ -3,7 +3,7 @@ backglassChecksum: "3EA3E61C6CCC19A33F1555B2ECEF4843"
 backglassNotes: "Download 'Spongebob (original 2023).zip'"
 backglassVPSId: "CcRmPZ1pfy"
 fps: 60
-specialDMDArchiveRoot: "SpongeBob's Bikini Bottom Pinball VPW 2.1/SpongebobDMD"
+specialDMDArchiveRoot: "SpongebobDMD"
 specialDMDBundled: true
 specialDMDType: "FlexDMD"
 tableNotes: "Download 'SpongeBob's Bikini Bottom Pinball VPW 2.1.vpx' (v2.1)"
