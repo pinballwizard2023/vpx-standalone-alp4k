@@ -37,6 +37,10 @@ Const AmbientBallShadowOn = 1		'0 = Static shadow under ball ("flasher" image, l
 									'1 = Moving ball shadow ("primitive" object, like ninuzzu's) - This is the only one that shows up on the pf when in ramps and fades when close to lights!
 									'2 = flasher image shadow, but it moves like ninuzzu's
 
+'----- Performance toggles (added for ALP4K FPS) -----
+Const CabFlasherReflections = 0  '0 = OFF: skip the cabinet/backbox flasher glow quads (big FPS win). 1 = original look
+Const ShowFlasherBloom      = 0  '0 = OFF: skip the extra bloom quad on each flasher dome. 1 = original look
+
 
 '*******************************************
 '  Constants and Global Variables
@@ -1432,7 +1436,7 @@ FLvls = Array(0,0,0,0,0,0)
 Sub ModFlashFlasher(nr, aValue)
 
 	if aValue > 0 And FLvls(nr) = 0 Then  'turning on
-		objflasher(nr).visible = 1 : objbloom(nr).visible = 1 : objlit(nr).visible = 1
+		objflasher(nr).visible = 1 : objbloom(nr).visible = ShowFlasherBloom : objlit(nr).visible = 1
 		Select Case nr
 			Case 1:
 				If VRRoom > 0 Then
@@ -1442,11 +1446,11 @@ Sub ModFlashFlasher(nr, aValue)
 					VRBGFL30_4.visible = 1
 					BGBulb19.opacity = 20
 				End If
-				FlasherLL_L.visible = 1
-				FlasherLL_BL.visible = 1
-				FlasherLL_R.visible = 1
-				FlasherLL_BT.visible = 1
-				FlasherLL_P.visible = 1
+				FlasherLL_L.visible = CabFlasherReflections
+				FlasherLL_BL.visible = CabFlasherReflections
+				FlasherLL_R.visible = CabFlasherReflections
+				FlasherLL_BT.visible = CabFlasherReflections
+				FlasherLL_P.visible = CabFlasherReflections
 			Case 2:
 				If VRRoom > 0 Then
 					VRBGFL31_1.visible = 1
@@ -1454,11 +1458,11 @@ Sub ModFlashFlasher(nr, aValue)
 					VRBGFL31_3.visible = 1
 					VRBGFL31_4.visible = 1
 				End If
-				FlasherL_L.visible = 1
-				FlasherL_BL.visible = 1
-				FlasherL_R.visible = 1
-				FlasherL_BT.visible = 1
-				FlasherL_P.visible = 1
+				FlasherL_L.visible = CabFlasherReflections
+				FlasherL_BL.visible = CabFlasherReflections
+				FlasherL_R.visible = CabFlasherReflections
+				FlasherL_BT.visible = CabFlasherReflections
+				FlasherL_P.visible = CabFlasherReflections
 			Case 3:
 				If VRRoom > 0 Then
 					VRBGFL9_1.visible = 1
@@ -1466,11 +1470,11 @@ Sub ModFlashFlasher(nr, aValue)
 					VRBGFL9_3.visible = 1
 					VRBGFL9_4.visible = 1
 				End If
-				FlasherC_L.visible = 1
-				FlasherC_BL.visible = 1
-				FlasherC_R.visible = 1
-				FlasherC_BT.visible = 1
-				FlasherC_P.visible = 1
+				FlasherC_L.visible = CabFlasherReflections
+				FlasherC_BL.visible = CabFlasherReflections
+				FlasherC_R.visible = CabFlasherReflections
+				FlasherC_BT.visible = CabFlasherReflections
+				FlasherC_P.visible = CabFlasherReflections
 			Case 5:
 				If VRRoom > 0 Then
 					VRBGFL32_1.visible = 1
@@ -1478,11 +1482,11 @@ Sub ModFlashFlasher(nr, aValue)
 					VRBGFL32_3.visible = 1
 					VRBGFL32_4.visible = 1
 				End If
-				FlasherR_L.visible = 1
-				FlasherR_BL.visible = 1
-				FlasherR_R.visible = 1
-				FlasherR_BT.visible = 1
-				FlasherR_P.visible = 1
+				FlasherR_L.visible = CabFlasherReflections
+				FlasherR_BL.visible = CabFlasherReflections
+				FlasherR_R.visible = CabFlasherReflections
+				FlasherR_BT.visible = CabFlasherReflections
+				FlasherR_P.visible = CabFlasherReflections
 		End Select
 
 	ElseIf aValue = 0 And FLvls(nr) > 0 Then  'turning off
