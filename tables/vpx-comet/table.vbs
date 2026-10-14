@@ -96,8 +96,8 @@ const leftoutlanepost = 1 '0 = hard, 1 = normal (default).  Just moves a post su
 '----- Desktop, VR, or Full Cabinet Options -----
 
 const VR_Room = 0 ' 0 is desktop or cab mode, 1 is VR Room
-const cab_mode = 0 ' 1 is set for cabinet mode to turn off the desktop version of the backglass score lights 
-const BallBrightness = 0 '0 = dark, 1 = brighter, 2 = brightest
+const cab_mode = 1 ' 1 is set for cabinet mode to turn off the desktop version of the backglass score lights 
+const BallBrightness = 2 '0 = dark, 1 = brighter, 2 = brightest
 
 ' *** If using VR Room:
 
