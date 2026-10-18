@@ -17,4 +17,7 @@ vpxChecksum:
   - "D17A3B3D30B352C6DD91F8B5FB685619"
 vpxVPSId: "Gqk20SuYO-"
 vpxExtractExtra:
-  - "music"
+  - "UnrealTournament"
+postInstallRename:
+  - source: "UnrealTournament"
+    destination: "music"
