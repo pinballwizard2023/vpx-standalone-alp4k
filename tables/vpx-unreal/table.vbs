@@ -236,7 +236,7 @@ Dim DB2S_on : DB2S_on	=	0		' 0=auto 1=on : dB2S
 '*
 '* OK, OK, OK! 
 '* Lethal Weapon 3 table Tune-Up by VPin Workshop. 
-'* It all started by again by just thinking about adding nFozzy’s physics and some missing textures in the original table,
+'* It all started by again by just thinking about adding nFozzyï¿½s physics and some missing textures in the original table,
 '* then we started replacing some primitives and reworking the existing ones, then the apron, cabinet, metal ramp, bats and a few other things were replaced.
 '* Totally new 3d inserts. Then different lamps were added to have a better lighting of all the new baked textures and finally adding a built in VR room...
 '*
@@ -332,7 +332,7 @@ Dim DB2S_on : DB2S_on	=	0		' 0=auto 1=on : dB2S
 
 
 Const DOFdebug =			0		' need a double check all dof calls, many are missing  ' set to 1 to turn on debug on dof events
-Const StaticScoreboard =	0		' new dmd is not enabled for this/not working				' if the vidoes on scoreboard are bad for you set this to 1
+Const StaticScoreboard =	1		' new dmd is not enabled for this/not working				' if the vidoes on scoreboard are bad for you set this to 1
 
 ' Select Player team With left magna save 
 Dim Team(4)
@@ -8059,7 +8059,7 @@ Sub Sw28_hit
 			Scoring 50000,1000
 		End If
 
-	Else ' no kb so this was missing :Å
+	Else ' no kb so this was missing :ï¿½
 		GiBlinkOnce
 		PlaySound "mandown", 1, 0.8 * BG_Volume, 0, 0,0,0, 0, 0
 		Scoring 50000,1000
@@ -12434,6 +12434,8 @@ Dim LiandriReward, LiandriCounter, LiandriText
 
 Dim GameDMDdelay
 Dim Showcombo, ShowComboText1, ShowComboText2
+Dim KillingHoldUntil, KillingLastTxt
+Dim TitleHoldUntil, TitleLastTxt, ReplayHoldUntil, CapHideUntil, ELHideUntil
 
 
 Sub DMDTimer_Timer
@@ -12444,6 +12446,82 @@ Sub DMDTimer_Timer
 
 
 	Frame=Frame+1 
+	' === ALP fix: "Killing"/"Killing2" callout labels are meant to clear themselves by sliding
+	' === off-screen via FlexDMD MoveTo animations, which do not run in this standalone build, so
+	' === they stay stuck. Clear them on a GameTime (ms) hold instead. Whole block is error-safe. ===
+	Dim kTxt
+	On Error Resume Next
+	kTxt = ""
+	kTxt = FlexDMD.Stage.GetLabel("Killing").Text & "|" & FlexDMD.Stage.GetLabel("Killing2").Text
+	If kTxt <> "" And kTxt <> "|" Then
+		If kTxt <> KillingLastTxt Then
+			KillingLastTxt = kTxt
+			KillingHoldUntil = GameTime + 2500
+		ElseIf KillingHoldUntil > 0 And GameTime >= KillingHoldUntil Then
+			FlexDMD.Stage.GetLabel("Killing").Text = ""
+			FlexDMD.Stage.GetLabel("Killing2").Text = ""
+			KillingHoldUntil = 0
+			KillingLastTxt = "|"
+		End If
+	End If
+	' === ALP fix: "Title" status line (CAPTURE flags, REPLAY AT, CHAMPION, etc.) is shown via
+	' === Show(True) and meant to hide ~2.3s later via Show(False) -- an animation that does not
+	' === run here -- so it stays on permanently. Blank it on a GameTime hold to restore blink-off. ===
+	Dim tTxt
+	tTxt = ""
+	tTxt = FlexDMD.Stage.GetLabel("Title").Text
+	If tTxt <> "" Then
+		If tTxt <> TitleLastTxt Then
+			TitleLastTxt = tTxt
+			TitleHoldUntil = GameTime + 2400
+		ElseIf TitleHoldUntil > 0 And GameTime >= TitleHoldUntil Then
+			FlexDMD.Stage.GetLabel("Title").Text = ""
+			TitleHoldUntil = 0
+			TitleLastTxt = ""
+		End If
+	End If
+	' === ALP fix: replay-win banners (replay0/replay1/replay2) are shown then meant to slide off
+	' === and hide via animations that do not run here, so the REPLAY graphic stays stuck. Force
+	' === them off on a GameTime hold once they have been shown. ===
+	Dim rVis
+	rVis = False
+	If FlexDMD.Stage.GetImage("replay0").Visible Then rVis = True
+	If FlexDMD.Stage.GetImage("replay1").Visible Then rVis = True
+	If FlexDMD.Stage.GetImage("replay2").Visible Then rVis = True
+	If rVis Then
+		If ReplayHoldUntil = 0 Then
+			ReplayHoldUntil = GameTime + 4000
+		ElseIf GameTime >= ReplayHoldUntil Then
+			FlexDMD.Stage.GetImage("replay0").ClearActions
+			FlexDMD.Stage.GetImage("replay0").Visible = False
+			FlexDMD.Stage.GetImage("replay1").ClearActions
+			FlexDMD.Stage.GetImage("replay1").Visible = False
+			FlexDMD.Stage.GetImage("replay2").ClearActions
+			FlexDMD.Stage.GetImage("replay2").Visible = False
+			ReplayHoldUntil = 0
+		End If
+	Else
+		ReplayHoldUntil = 0
+	End If
+	' === ALP fix: CAPTURE (CAP_1..26) and EXTRA LIFE (EL_1..30) are flip-book image animations
+	' === meant to play once and hide via Show(False), which does not run here, so they stay stuck.
+	' === A deadline is armed where each is triggered; force all their frames off once it passes. ===
+	Dim ei, ci
+	If ELHideUntil > 0 And GameTime >= ELHideUntil Then
+		For ei = 1 To 30
+			FlexDMD.Stage.GetImage("EL_" & ei).ClearActions
+			FlexDMD.Stage.GetImage("EL_" & ei).Visible = False
+		Next
+		ELHideUntil = 0
+	End If
+	If CapHideUntil > 0 And GameTime >= CapHideUntil Then
+		For ci = 1 To 26
+			FlexDMD.Stage.GetImage("CAP_" & ci).ClearActions
+			FlexDMD.Stage.GetImage("CAP_" & ci).Visible = False
+		Next
+		CapHideUntil = 0
+	End If
+	On Error Goto 0
 	
 	Select Case DMDmode
 		Case 1 : 
@@ -13405,6 +13483,7 @@ End If
 					SignTurnON.enabled=True
 					nl001.image="extralife"
 					extralife=0
+					ELHideUntil = GameTime + 2500
 					SLS(185,2)=68 '  GI blink 2
 					SLS(1,0)=1 : spb1 1,1,5,0,0,1
 					DOF 110,2
@@ -13424,6 +13503,7 @@ End If
 
 				if capture=1 Then
 					capture=0
+					CapHideUntil = GameTime + 2500
 					for i = 1 to 26
 						SLS(185,2)=68 '  GI blink 2
 						SLS(1,0)=1 : spb1 1,1,5,0,0,1
