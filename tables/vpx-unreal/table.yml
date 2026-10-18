@@ -1,0 +1,20 @@
+---
+backglassChecksum: "92A1B290E6D50E0FE4B26B93E5AD56C6"
+backglassNotes: "Download 'unreal tournament.directb2s'"
+backglassVPSId: "m8Dnw6_ObH"
+fps: 60
+specialDMDArchiveRoot: "UT99DMD"
+specialDMDBundled: true
+specialDMDType: "FlexDMD"
+tableNotes: "Download 'UT99CTF_GE_2.3.zip'"
+tableVPSId: "EL6V9UiP"
+testers:
+  - "PBW23"
+  - "Wraith"
+vpxArchiveFormat: "zip"
+vpxChecksum:
+  - "C3E95C219BA7A13FE4000932DF5748C7"
+  - "D17A3B3D30B352C6DD91F8B5FB685619"
+vpxVPSId: "Gqk20SuYO-"
+vpxExtractExtra:
+  - "music"
