@@ -10,6 +10,7 @@ tableNotes: "Download 'UT99CTF_GE_2.3.zip'"
 tableVPSId: "EL6V9UiP"
 testers:
   - "PBW23"
+  - "Missile Toad"
   - "Wraith"
 vpxArchiveFormat: "zip"
 vpxChecksum:
