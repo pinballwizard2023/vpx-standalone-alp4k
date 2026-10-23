@@ -12450,7 +12450,8 @@ Sub DMDTimer_Timer
 	' === off-screen via FlexDMD MoveTo animations, which do not run in this standalone build, so
 	' === they stay stuck. Clear them on a GameTime (ms) hold instead. Whole block is error-safe. ===
 	Dim kTxt
-	On Error Resume Next
+	On Error Resume Next ' (also covers the ticks before FlexDMD is created)
+	FlexDMD.LockRenderThread ' ALP: these fixes mutate the stage / ClearActions from the script thread
 	kTxt = ""
 	kTxt = FlexDMD.Stage.GetLabel("Killing").Text & "|" & FlexDMD.Stage.GetLabel("Killing2").Text
 	If kTxt <> "" And kTxt <> "|" Then
@@ -12484,10 +12485,13 @@ Sub DMDTimer_Timer
 	' === and hide via animations that do not run here, so the REPLAY graphic stays stuck. Force
 	' === them off on a GameTime hold once they have been shown. ===
 	Dim rVis
-	rVis = False
-	If FlexDMD.Stage.GetImage("replay0").Visible Then rVis = True
-	If FlexDMD.Stage.GetImage("replay1").Visible Then rVis = True
-	If FlexDMD.Stage.GetImage("replay2").Visible Then rVis = True
+	Dim rv0, rv1, rv2
+	rVis = False : rv0 = False : rv1 = False : rv2 = False
+	' (assign, don't test in an If: under Resume Next an erroring If condition falls into Then)
+	rv0 = FlexDMD.Stage.GetImage("replay0").Visible
+	rv1 = FlexDMD.Stage.GetImage("replay1").Visible
+	rv2 = FlexDMD.Stage.GetImage("replay2").Visible
+	If rv0 = True Or rv1 = True Or rv2 = True Then rVis = True
 	If rVis Then
 		If ReplayHoldUntil = 0 Then
 			ReplayHoldUntil = GameTime + 4000
@@ -12521,6 +12525,7 @@ Sub DMDTimer_Timer
 		Next
 		CapHideUntil = 0
 	End If
+	FlexDMD.UnlockRenderThread
 	On Error Goto 0
 	
 	Select Case DMDmode
@@ -12606,6 +12611,17 @@ End If
 		Case 3 :
 			FlexDMD.LockRenderThread
 
+			' === ALP fix: DANGER/TILT flash via Repeat(...,2) actions re-added every few frames. On this
+			' === build those repeats don't end, so the flashing never stops once the warning/tilt is over.
+			' === When the warning ends, clear DANGER's actions and hide it (TILT is handled below). ===
+			If tilt>TiltSens and tilted=0 Then
+				DangerFlashing = 1
+			ElseIf DangerFlashing = 1 Then
+				DangerFlashing = 0
+				FlexDMD.Stage.GetImage("danger").ClearActions
+				FlexDMD.Stage.GetImage("danger").Visible = False
+			End If
+
 			If tilt>TiltSens and tilted=0 Then
 				If (Frame Mod 10) = 0 then
 					Set title = FlexDMD.Stage.GetImage("danger")
@@ -12647,18 +12663,12 @@ End If
 			If tiltimage <> tilted Then
 				tiltimage=tilted
 				If tiltimage=0 Then
-					Set title = FlexDMD.Stage.GetImage("tilt")
-					Set af = title.ActionFactory
-					Set list = af.Sequence()
-					list.Add af.Show(False)
-					list.Add af.Wait(0.7)
-					title.AddAction af.Repeat(list, 1)
-					Set title = FlexDMD.Stage.GetImage("tilt2")
-					Set af = title.ActionFactory
-					Set list = af.Sequence()
-					list.Add af.Show(False)
-					list.Add af.Wait(0.7)
-					title.AddAction af.Repeat(list, 1)
+					' === ALP fix: tilt is over. Stop the (endlessly repeating) TILT flash actions and
+					' === hide both TILT frames, instead of queueing one more Show(False) behind them. ===
+					FlexDMD.Stage.GetImage("tilt").ClearActions
+					FlexDMD.Stage.GetImage("tilt").Visible = False
+					FlexDMD.Stage.GetImage("tilt2").ClearActions
+					FlexDMD.Stage.GetImage("tilt2").Visible = False
 				End If
 			End If
 
@@ -13801,7 +13811,31 @@ End If
 			FlexDMD.Stage.GetLabel("score").Text = "PLAYER " & entertemp & " : " & FormatScore(SC(entertemp,1))
 			FlexDMD.Stage.GetLabel("score").SetAlignedPosition 64, 14, FlexDMD_Align_Center
 
-
+			' === ALP fix: the enter-initials actors are revealed by one-shot action sequences
+			' === (Wait -> Show -> MoveTo). On this build those sequences don't reliably stop after
+			' === one pass: the letter row and the full-screen REPLAY / DOUBLE REPLAY banners keep
+			' === cycling, so the letters slide away and get covered. Once the intro has had time to
+			' === play (~4.2s), clear every action on the scene and pin the final layout. Runs once. ===
+			If EnterSettled = 0 And GameTime - EnterStartTime >= 4200 Then
+				EnterSettled = 1
+				Dim esN
+				On Error Resume Next
+				For Each esN In Array("toptext", "score", "name1", "name2", "name3", "letters", "arrows")
+					FlexDMD.Stage.GetLabel(esN).ClearActions
+					FlexDMD.Stage.GetLabel(esN).Visible = True
+				Next
+				For Each esN In Array("replay0", "replay1", "replay2")
+					FlexDMD.Stage.GetImage(esN).ClearActions
+					FlexDMD.Stage.GetImage(esN).Visible = False
+				Next
+				FlexDMD.Stage.GetLabel("toptext").X = 8 : FlexDMD.Stage.GetLabel("toptext").Y = 0
+				FlexDMD.Stage.GetLabel("name1").X = 48 : FlexDMD.Stage.GetLabel("name1").Y = 16
+				FlexDMD.Stage.GetLabel("name2").X = 60 : FlexDMD.Stage.GetLabel("name2").Y = 16
+				FlexDMD.Stage.GetLabel("name3").X = 72 : FlexDMD.Stage.GetLabel("name3").Y = 16
+				FlexDMD.Stage.GetLabel("letters").X = 2 : FlexDMD.Stage.GetLabel("letters").Y = 27
+				FlexDMD.Stage.GetLabel("arrows").X = 2 : FlexDMD.Stage.GetLabel("arrows").Y = 27
+				On Error Goto 0
+			End If
 
 			FlexDMD.UnlockRenderThread
 
@@ -13815,6 +13849,8 @@ End Sub
 
 Dim scrollerText
 Dim entertemp
+Dim DangerFlashing ' ALP fix: tracks the DANGER warning so its flash can be stopped
+Dim EnterSettled, EnterStartTime ' ALP fix: one-shot settle of the enter-initials scene
 Dim replaywin
 Dim Flippinfo
 Dim ROCcounter
@@ -13854,6 +13890,7 @@ dim fontbig
 Sub	createvidEnter
 	frame=0 ' USED AS TIMER
 	DMDmode=5 ' enternamevideo
+	EnterSettled=0 : EnterStartTime=GameTime ' ALP fix
 
 	Dim title, af,list
 	Dim scene 
