@@ -21,4 +21,4 @@ vpxExtractExtra:
   - "UnrealTournament"
 postInstallRename:
   - source: "UnrealTournament"
-    destination: "music"
+    destination: "music/UnrealTournament"
