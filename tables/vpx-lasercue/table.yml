@@ -6,10 +6,10 @@ fps: 60
 romChecksum: "E84A5BFA61A5A37F1CDD18F4B66461D7"
 romNotes: "Download 'lsrcu_l2.zip'"
 romVPSId: "UHVQoFXG"
-tableNotes: "Download 'Laser Cue (Williams 1984) w VR Room 2.0.0.vpx.zip'"
+tableNotes: "Download 'Laser Cue (Williams 1984) 3.0.0 w nvram.zip'"
 tableVPSId: "T-J-s42u"
 testers:
   - "PBW23"
   - "Miku"
-vpxChecksum: "A72F340AB0D235642F5D0FCAEC7E8CF0"
+vpxChecksum: "F6C9CEC36775436984333A9B5D3A5825"
 vpxVPSId: "PCt3IrcAE2"
