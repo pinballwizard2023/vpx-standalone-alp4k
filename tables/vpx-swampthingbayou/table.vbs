@@ -589,7 +589,7 @@ Sub Table1_Init()
     DMD_Init
 
     ' freeplay or coins
-    bFreePlay = False 'we want coins
+    bFreePlay = True 'we want coins
 
     if bFreePlay Then DOF 125, DOFOn
 
