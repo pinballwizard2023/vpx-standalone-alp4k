@@ -1,0 +1,23 @@
+---
+altSoundArchiveFormat: "zip"
+altSoundArchiveRoot: "MEDIA PACK/SUBLIMEMUSIC"
+altSoundBundled: true
+altSoundChecksum: "E046670DEEFFC451B9F7B2CC5FFEB63C"
+altSoundNotes: "Download 'MEDIA PACK.zip' from table download page"
+postInstallRename:
+  - source: "pinmame/altsound/alienstr"
+    destination: "music/SUBLIMEMUSIC"
+backglassChecksum: "8974D3B745915CDDD6ACC0AA5E3225F8"
+backglassNotes: "Download 'Sublime (ZandysArcade 2025) full dmd.zip'"
+backglassVPSId: "GNBoRrux_f"
+fps: 60
+romBundled: true
+romChecksum: "6241C22899DB43F91B1669AAB2A2A5C3"
+romNotes: "included in 'MEDIA PACK.zip'"
+romVersionOverride: "alienstr"
+tableNotes: "Download 'SUBLIME.vpx'"
+tableVPSId: "QGU2JjnNzL"
+testers:
+  - "PBW23"
+vpxChecksum: "19B518C073A979CAB5C2F4BF27410563"
+vpxVPSId: "PDg8LiNOut"
