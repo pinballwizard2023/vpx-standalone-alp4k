@@ -13,7 +13,7 @@ backglassVPSId: "GNBoRrux_f"
 fps: 60
 romBundled: true
 romChecksum: "6241C22899DB43F91B1669AAB2A2A5C3"
-romNotes: "included in 'MEDIA PACK.zip'"
+romNotes: "unzip MEDIA PACK.zip and upload alienstr.zip"
 romVersionOverride: "alienstr"
 tableNotes: "Download 'SUBLIME.vpx'"
 tableVPSId: "QGU2JjnNzL"
