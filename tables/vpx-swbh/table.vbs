@@ -31,7 +31,7 @@ Const BackGlassVolumeDial = 0.3 	' 0-1 : Callout Sound Volume
 Const osbactive=			0		' Orbital Scoreboard ( google it ) - set to 0 for off, 1 for on. You must make your own "osb.vbs" for this to work !
 Const TournamentMode=		False	' False/True : Enabled = NO extra balls, lower ballsave . lower centerpin, tournament mode disables Orbital Scoreboard !
 Const VRroom=				0		' 1=on 0=off : Need flex DMD !! will override some other settings !
-FlexDMD=					0		' 1=on 0=off : See instructions over for FLEX and Freezy
+FlexDMD=					1		' 1=on 0=off : See instructions over for FLEX and Freezy
 MiddleDisplay=				1		' 1=on 0=off ( 2=FlexDMD on Playfield: Will override FlexDMD setting )
 ForceBackScreen=			0		' 1=on 0=off : dB2S
 DTScore=					1		' 1=On 0=Auto: show desktop score reels 
