@@ -50,7 +50,7 @@ Const TableName = "warriorsea" ' file name to save highscores and other variable
 Const cGameName = "warriorsea" ' B2S name
 Const MaxPlayers = 4           ' 1 to 4 can play
 Const MaxMultiplier = 4        ' limit bonus multiplier
-Const FreePlay = False         ' Free play or coins
+Const FreePlay = True         ' Free play or coins
 
 ' Global variables
 Dim PlayersPlayingGame
