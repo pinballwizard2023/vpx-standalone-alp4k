@@ -80,7 +80,7 @@ Const SongVolume = 0.1 ' 1 is full volume. Value is from 0 to 1
 'FlexDMD in high or normal quality
 'change it to True if you have an LCD screen, 256x64
 'or keep it False if you have a real DMD at 128x32 in size
-Const FlexDMDHighQuality = False
+Const FlexDMDHighQuality = True
 
 ' Define any Constants
 Const cGameName = "KillerInstinct"
@@ -247,7 +247,7 @@ Sub Table1_Init()
     DMD_Init
 
     ' freeplay or coins
-    bFreePlay = False 'we want coins
+    bFreePlay = True 'we want coins
 
     if bFreePlay Then DOF 125, DOFOn
 
