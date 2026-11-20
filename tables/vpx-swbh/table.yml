@@ -1,0 +1,22 @@
+---
+backglassBundled: true
+backglassChecksum: "6E8F0C3CD8D3C85D6768027EDE464656"
+backglassNotes: "bundled with table download"
+fps: 60
+postInstallRename:
+  - source: "BountyHunter"
+    destination: "music/BountyHunter"
+specialDMDArchiveRoot: "BountyHunterDMD"
+specialDMDBundled: true
+specialDMDType: "FlexDMD"
+tableNotes: "Download 'StarWarsBountyHunter3.02.zip'"
+tableVPSId: "YflY_c7T"
+testers:
+  - "PBW23"
+vpxArchiveFormat: "zip"
+vpxChecksum:
+  - "5BBD61B304498DFDBE1D86ED68CE94BC"
+  - "979DF5D33FA16001077A9BC245B51F14"
+vpxExtractExtra:
+  - "BountyHunter"
+vpxVPSId: "Ba357hhX"
