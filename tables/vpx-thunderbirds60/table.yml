@@ -1,0 +1,15 @@
+---
+fps: 60
+pupArchiveFormat: "zip"
+pupArchiveRoot: "THUNDERLMT"
+pupBundled: true
+pupChecksum: "F18C045770CD389BDEC500A434A3CA63"
+pupNotes: "included with table download"
+pupRequired: true
+pupVersion: "1.0.0"
+tableNotes: "Download 'FullEnglishVersion.zip' - v1.0.0"
+tableVPSId: "dkfq6PE304"
+testers:
+  - "PBW23"
+vpxChecksum: "8F0190DB4B540CF2F5D83F27672A1FFA"
+vpxVPSId: "OXUBvOg1iI"
