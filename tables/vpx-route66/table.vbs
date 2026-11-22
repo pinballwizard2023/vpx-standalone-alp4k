@@ -78,6 +78,12 @@ Dim BallsOnPlayfield
 Dim isGameInPlay
 Dim isTilted
 Dim isProjectorEnabled
+Dim isResetMilesOnStart
+
+' defaults - the Table Options menu (F12) overrides these when the table loads
+isProjectorEnabled = True
+OdometerAddAmount = 1
+isResetMilesOnStart = False
        
 Dim BackglassStatus 'for B2s attract mode
 ' core.vbs variables
@@ -165,21 +171,9 @@ Sub Table1_KeyDown(ByVal Keycode)
 		If Keycode = AddCreditKey Then
 			PlaySound "fx_coin"
 		End If
-		'kecode 3 is the "2" key on the keyboard
-		If keycode = StartGameKey or keycode = 3 or keycode = 4 or keycode = 5 Then
-			If keycode = 3 then
-				MileCount = 0
-			End If
-			If keycode = 4 then
-				isProjectorEnabled = False
-			Else
-				isProjectorEnabled = True
-			End If
-			If keycode = 5 Then
-				OdometerAddAmount = -1
-			Else
-				OdometerAddAmount = 1
-			End If
+		'options that used to be on the 2, 3 and 4 keys are now in the Table Options menu (F12)
+		If keycode = StartGameKey Then
+			If isResetMilesOnStart Then MileCount = 0
 
 			cleanupTimer.Enabled=True
 			'when the cleanupTimer finishes, it will go to Game_Init to start the game
@@ -2055,4 +2049,24 @@ Sub B2sOdometer()
 		Case 8:Controller.B2SSetData 4, 8
 		Case 9:Controller.B2SSetData 4, 9
     End Select
+End Sub
+
+
+'*******************************************
+'  Table Options (F12 menu)
+'  replaces the old start keys:
+'    2 = reset miles, 3 = projector off, 4 = odometer counts down
+'*******************************************
+
+Sub Table1_OptionEvent(ByVal eventId)
+	Dim x
+
+	x = Table1.Option("Slideshow/Gas/Odometer", 0, 1, 1, 1, 0, Array("Off", "On"))
+	If x = 1 Then isProjectorEnabled = True Else isProjectorEnabled = False
+
+	x = Table1.Option("Odometer Direction", 0, 1, 1, 0, 0, Array("Forward", "Reverse"))
+	If x = 1 Then OdometerAddAmount = -1 Else OdometerAddAmount = 1
+
+	x = Table1.Option("Reset Miles at Game Start", 0, 1, 1, 0, 0, Array("No", "Yes"))
+	If x = 1 Then isResetMilesOnStart = True Else isResetMilesOnStart = False
 End Sub
