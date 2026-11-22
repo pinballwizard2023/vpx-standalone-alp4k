@@ -3019,7 +3019,7 @@ Sub PinOn()
 
 
 	' We want the player to put in credits (Change this 
-	bFreePlay = FALSE
+	bFreePlay = TRUE
 
 	' kill the last switch hit (this this variable is very usefull for game control)
 	set LastSwitchHit = DummyTrigger
