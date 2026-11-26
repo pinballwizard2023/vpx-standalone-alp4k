@@ -100824,6 +100824,14 @@ Sub RollingTimer_Timer()
 
 	' play the rolling sound for each ball
     For b = 0 to UBound(BOT)
+        ' The upper playfield has no wall on its edge left of GuardianKickerL. A ball that rolls off it lands in the
+        ' fenced channel underneath and can never leave: put it back at the top of the guardian lane.
+        If BOT(b).z < 60 And BOT(b).y < 690 Then
+            If BOT(b).x > 200.8 - 0.2155 * BOT(b).y And BOT(b).x < 247.9 - 0.2231 * BOT(b).y Then
+                BOT(b).x = 270 : BOT(b).y = 72 : BOT(b).z = 99
+                BOT(b).velx = 0 : BOT(b).vely = 0 : BOT(b).velz = 0
+            End If
+        End If
         If BallVel(BOT(b) ) > 1 AND BOT(b).z < 130 Then
             rolling(b) = True
             PlaySound("fx_ballrolling" & b), -1, Vol(BOT(b)), AudioPan(BOT(b)), 0, Pitch(BOT(b)), 1, 0, AudioFade(BOT(b))
