@@ -1,4 +1,9 @@
 ---
+altSoundArchiveFormat: "zip"
+altSoundArchiveRoot: "Tom and Jerry"
+altSoundBundled: true
+altSoundChecksum: "B082CAE2B29DFBE00E85B22DD466257E"
+altSoundNotes: "Use 'Tom and Jerry (Original 2019) LW.zip' (same download as the diff)"
 backglassChecksum: "4F77A09591A872E30F31D403AB220E04"
 backglassNotes: "Download 'Tom and Jerry (Original 2018).directb2s'"
 backglassVPSId: "fxiIrqxPuk"
@@ -10,16 +15,8 @@ diffNotes: "Download 'Tom and Jerry (Original 2019) LW.zip'"
 diffVPSId: "K0A0V15Ui_"
 fps: 60
 postInstallRename:
-  - source: "bgout_T&JbackgroundMusic0.mp3"
-    destination: "music/Tom and Jerry/bgout_T&JbackgroundMusic0.mp3"
-  - source: "bgout_T&JbackgroundMusic1.mp3"
-    destination: "music/Tom and Jerry/bgout_T&JbackgroundMusic1.mp3"
-  - source: "bgout_T&JbackgroundMusic2.mp3"
-    destination: "music/Tom and Jerry/bgout_T&JbackgroundMusic2.mp3"
-  - source: "bgout_T&JbackgroundMusic3.mp3"
-    destination: "music/Tom and Jerry/bgout_T&JbackgroundMusic3.mp3"
-  - source: "bgout_T&Jmultiballmadness.mp3"
-    destination: "music/Tom and Jerry/bgout_T&Jmultiballmadness.mp3"
+  - source: "pinmame/altsound/tomjerry"
+    destination: "music/Tom and Jerry"
 romBundled: true
 romChecksum: "57535E2B409640C6A4957F2EC13251B6"
 romNotes: "included with table download"
@@ -29,14 +26,5 @@ tableVPSId: "6IANsOcS"
 testers:
   - "PBW23"
   - "Wraith"
-vpxArchiveFormat: "zip"
-vpxChecksum:
-  - "A2AB8960D7ECCF90CC9115D00DF3F3F7"
-  - "E89D5D107851D6DBE1007C7EA5898F9C"
-vpxExtractExtra:
-  - "bgout_T&JbackgroundMusic0.mp3"
-  - "bgout_T&JbackgroundMusic1.mp3"
-  - "bgout_T&JbackgroundMusic2.mp3"
-  - "bgout_T&JbackgroundMusic3.mp3"
-  - "bgout_T&Jmultiballmadness.mp3"
+vpxChecksum: "A2AB8960D7ECCF90CC9115D00DF3F3F7"
 vpxVPSId: "GVDJWJHyK0"
