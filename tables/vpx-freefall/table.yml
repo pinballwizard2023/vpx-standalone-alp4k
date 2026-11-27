@@ -1,14 +1,17 @@
 ---
-enabled: false
-backglassChecksum: "57274a0a892be849077cfe1e7f5ad681"
-backglassVPSId: "p47K1tB0"
+backglassChecksum: "47B5EA91379EAA4E77E780CFE4D33AF0"
+backglassNotes: "Download 'Freefall (Stern 1981).zip'"
+backglassVPSId: "OWUTvKOvMm"
 fps: 60
-romChecksum: "2bb377aedbbd1d142afb0200ff05b563"
+romChecksum: "2BB377AEDBBD1D142AFB0200FF05B563"
+romNotes: "Download 'freefall.zip'"
 romVPSId: "TbMCx5Zg"
-tableNotes: "Download 'Freefall (Stern 1981) [jpsalas 2026 - v7].zip'"
+tableNotes: "Download 'Freefall (Stern 1981) Physics Sound VR MOD.vpx'"
 tableVPSId: "SrA6feLw"
-tagline: "'...and this bird you cannot chay-ay-ay-ange'"
 testers:
+  - "PBW23"
+  - "Dasme"
+  - "pointdablame"
   - "psybocilin"
-vpxChecksum: "5AF46D6F770F1CBF68FBF7DD254567EA"
-vpxVPSId: "3nFjYzg0"
+vpxChecksum: "4EF53D424D90CC9942F0029D8408CA75"
+vpxVPSId: "Xl2zQbs9zr"

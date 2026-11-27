@@ -1,0 +1,18 @@
+---
+backglassChecksum: "8088B9E717B50082ABC9372478613D67"
+backglassNotes: "Download 'TX-Sector (Gottlieb 1988) fulldmd.zip'"
+backglassVPSId: "MS1hV1-FL-"
+diffChecksum: "77CC3C225D23E29C54ECBE9C119CC64E"
+diffNotes: "Download 'TX-Sector (Gottlieb 1988).dif'"
+diffVPSId: "nLPJEwwp9z"
+fps: 60
+romChecksum: "C427856FC2782CA082E2C5FEBBB18450"
+romNotes: "Download 'txsector.zip'"
+romUrlOverride: "https://pinballnirvana.com/forums/resources/txsector.2542/"
+romVersionOverride: "txsector"
+tableNotes: "Download '197177748_TX-Sector(Gottlieb1988)SG1bsoNModV1.1.vpx.zip'"
+tableVPSId: "BfZVc524"
+testers:
+  - "PBW23"
+vpxChecksum: "09D4FF8DA31BE0C331846A4DCF7C4AB0"
+vpxVPSId: "SDsQSeU93e"

@@ -1,0 +1,21 @@
+---
+backglassChecksum: "54F52D711AC2370A28FA89314D74C7BE"
+backglassNotes: "Download 'Three Angels (original 2018) alt.zip'"
+backglassVPSId: "5KufDDolEP"
+fps: 60
+postInstallRename:
+  - source: "3angels"
+    destination: "music/3angels"
+tableNotes: "Download 'Three Angels (Original 2018) LW 2.0.3.zip'"
+tableVPSId: "t2vMdwyv"
+testers:
+  - "PBW23"
+  - "Wraith"
+  - "Bla1ze"
+vpxArchiveFormat: "zip"
+vpxChecksum:
+  - "D408180A5952745BF8B2A08EB882C203"
+  - "E3FA378B89BD3D1EF016CDD4E2D824B3"
+vpxExtractExtra:
+  - "3angels"
+vpxVPSId: "ngGxpWAOse"

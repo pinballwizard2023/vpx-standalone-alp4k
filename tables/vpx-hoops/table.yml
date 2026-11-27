@@ -1,0 +1,15 @@
+---
+backglassChecksum: "10AF14A94BA0C94EEB8568A70968E404"
+backglassNotes: "Download 'Hoops (Gottlieb 1991).zip'"
+backglassVPSId: "TQAXHNV1vr"
+fps: 60
+romChecksum: "55CF5B2B72F0BC4538E9E67D610C4FD5"
+romNotes: "Download 'hoops.zip'"
+romUrlOverride: "https://pinballnirvana.com/forums/resources/hoops.1949/"
+romVersionOverride: "hoops"
+tableNotes: "Download 'Hoops (Gottlieb 1991) 1.1.1 Hybrid.vpx'"
+tableVPSId: "6cVPgZqS"
+testers:
+  - "PBW23"
+vpxChecksum: "2DBE7AF6986F12ED9D5A5F77FC0FE926"
+vpxVPSId: "I6wvPgwghj"
